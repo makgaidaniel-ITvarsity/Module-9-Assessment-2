@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>World Time</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width-device-width, initial-scale+1.0">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!----------------------------RAdio buttons---------------------------------------------------------->
+        
+        
+                <input type="radio" class="toggle_option" id="toggle0" name="toggle_option">    
+                <input type="radio"  class="toggle_option" id="toggle1" name="toggle_option">
+                <input type="radio"  class="toggle_option" id="toggle2" name="toggle_option">    
+                <input type="radio" class="toggle_option" id="toggle3" name="toggle_option">
+                <input type="radio" class="toggle_option" id="toggle4" name="toggle_option">
+                <input type="radio" class="toggle_option" id="toggle5" name="toggle_option">
+                <input type="radio" class="toggle_option" id="toggle6" name="toggle_option">
+                <input type="radio" class="toggle_option" id="toggle7" name="toggle_option">
+                <input type="radio" class="toggle_option" id="toggle8" name="toggle_option">
+                <input type="radio" class="toggle_option" id="toggle9" name="toggle_option">
+            
+        
+        <!--------------------------------------------------------------------------------------------------->
+        <div id="heading">
+            <p>Press the flag to see different Cities</p>
+        
+        </div>    
+        <div class="display">
+            <div class="overlay">
+                <div id="showTime">
+                </div>
+            </div>
+         </div>
+        
+        <p id="local">loading...</p>
+        <div id="output">
+            
+                
+        
+        </div>
+        
+        
+        <script>
+            
+            
+            
+            
+            
+            /*-------------------------------------------------*/
+            
+            var tog0 = document.getElementById("toggle0");
+            var tog1 = document.getElementById("toggle1");
+            var tog2 = document.getElementById("toggle2");
+            var tog3 = document.getElementById("toggle3");
+            var tog4 = document.getElementById("toggle4");
+            var tog5 = document.getElementById("toggle5");
+            var tog6 = document.getElementById("toggle6");
+            var tog7 = document.getElementById("toggle7");
+            var tog8 = document.getElementById("toggle8");            
+            var tog9 = document.getElementById("toggle9");            
+            
+           var timer = setInterval(displayWorldTime, 1000);
+            //array of the cities
+            var cities = [
+                {name: "Istanbul", utcOffset: 3, flag: "Turkey.png"},
+                {name: "New York City", utcOffset: -5, flag: "United-States-of-America.png"},
+                {name: "Tokyo", utcOffset: 9, flag: "Japan.png"},
+                {name: "Moscow", utcOffset: 3, flag: "Russia.png"},
+                {name: "Rio De Janeiro", utcOffset: -3, flag: "Brazil.png"},
+                {name: "Sydney", utcOffset: 11, flag: "Australia.png"},
+                {name: "Vancouver", utcOffset: -8, flag: "Canada.png"},
+                {name: "Cape Town", utcOffset: +2, flag: "South-Africa.png"},
+                {name: "Accra", utcOffset: 0, flag: "Ghana.png"},
+                {name: "Beijing", utcOffset: 8, flag: "China.png"}
+            ];
+            
+            
+            console.log(getCurrentTime(cities[5].utcOffset));
+           function radio()
+            {
+                var output;
+                if(tog0.checked)
+                    {
+                        output = `
+                                    <p id="place">Accra</p>
+
+                                    <p>${getCurrentTime(cities[0].utcOffset)}</p>
+                                `;
+                    }
+                
+                if(tog1.checked)
+                    {
+                         output = `
+                                    <p id="place">Beijing</p>
+
+                                    <p>${getCurrentTime(cities[1].utcOffset)}</p>
+                                `;
+                    }
+                
+                if(tog2.checked)
+                    {
+                        output = `
+
+                                    <p id="place">Cape Town</p>
+
+                                    <p>${getCurrentTime(cities[2].utcOffset)}</p>
+                                `;
+                    }
+                
+                if(tog3.checked)
+                    {
+                        output = `
+                                    <p id="place">Istanbul</p>
+
+                                    <p>${getCurrentTime(cities[3].utcOffset)}</p>
+                                `;
+                    }
+                
+                if(tog4.checked)
+                    {
+                        output = `
+                                    <p id="place">Moscow</p>
+
+                                    <p>${getCurrentTime(cities[4].utcOffset)}</p>
+                                `;
+                    }
+                
+                if(tog5.checked)
+                    {
+                        output = `
+                                    <p id="place">New York City</p>
+
+                                    <p>${getCurrentTime(cities[5].utcOffset)}</p>
+                                `;
+                    }
+                
+                if(tog6.checked)
+                    {
+                        output = `
+                                    <p id="place">Rio De Jenairo</p>
+
+                                    <p>${getCurrentTime(cities[6].utcOffset)}</p>
+                                `;
+                    }
+                
+                
+                if(tog7.checked)
+                    {
+                        output = `
+                                    <p id="place">Sydney</p>
+
+                                    <p>${getCurrentTime(cities[7].utcOffset)}</p>
+                                `;
+                    }
+                
+                if(tog8.checked)
+                    {
+                            output = `
+                                    <p id="place">Tokyo</p>
+
+                                    <p>${getCurrentTime(cities[8].utcOffset)}</p>
+                                `;
+                    }                
+                
+                if(tog9.checked)
+                    {
+                        output = `
+                                    <p id="place">Vancouver</p>
+
+                                    <p>${getCurrentTime(cities[9].utcOffset)}</p>
+                                `;
+                    }
+                
+                document.getElementById("showTime").innerHTML = output;
+            }
+            
+            
+            //Sort the cities in alphabetical order
+            cities.sort(compare);
+            
+            function compare(a, b)
+            {
+                var cityA = a.name;
+                var cityB = b.name;
+                
+                var comparison = 0;
+                
+                if(cityA > cityB)
+                    {
+                        comparison = 1;
+                    }
+                else if(cityA < cityB)
+                    {
+                        comparison = -1;
+                    }
+                return comparison;
+            }
+            
+            
+           //calculate uct time 
+            function getUtcTime()
+            {
+                var dt = new Date();
+                var utcOffset = dt.getTimezoneOffset() * 60000; //this give us utc offset in milliseconds
+                var utcTime = new Date(dt.getTime() + utcOffset);
+                
+                return utcTime.getTime();
+                
+                
+            }
+            
+            //Calculate the time for each city
+            function getCurrentTime(utcOffset)
+            {
+                var mil = 1000 * 60 * 60;//milliseconds in an hour
+                var time = new Date(getUtcTime() + utcOffset * mil);
+                
+                return time.toLocaleTimeString();
+            }
+            
+            
+            //display
+            function displayWorldTime()
+            {
+                var dt = new Date();
+                document.getElementById("local").innerHTML = "Local time : " + dt.toLocaleTimeString();
+                
+                var output = `<table id="cities">`;
+                output += `
+                            <tr>
+                                <th class="col1"></th>
+                                <th class="col2"></th>
+                                <th></th>
+                            </tr>
+                            `;
+                for(a = 0; a < cities.length; a++)
+                    {
+                        output+= `
+                            
+                                <tr class="row${a}">
+                                    
+                                        <td ><label for="toggle${a}"><img src="img/${cities[a].flag}"/></label></td>
+                                        <td><label for="toggle${a}">${cities[a].name}</label></td>
+                                        <td><label for="toggle${a}">${getCurrentTime(cities[a].utcOffset)}</label></td>
+                                    
+                                </tr>
+                                `;
+                    }
+                output += `</table>`;
+                document.getElementById("output").innerHTML = output;
+                
+                
+                radio();
+            }
+        </script>
+    </body>
+
+</html>

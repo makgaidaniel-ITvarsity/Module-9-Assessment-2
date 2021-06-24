@@ -1,0 +1,260 @@
+.{
+    margin: 0;
+    padding: 0;
+}
+
+body
+{
+   
+    font-family: "Raleway", sans-serif;
+    background-color: #895245;
+}
+
+
+input
+{
+    position: absolute;
+    opacity: 0;
+}
+
+#heading
+{
+    text-align: center;
+    font-weight: bolder;
+    font-size: 50px;
+}
+
+.display
+{
+    width: 100%;
+    height: 450px;
+    
+}
+
+
+
+
+.overlay
+{
+    top: -20px;
+    position: relative;
+    width: 100%;
+    height : 450px;
+    background-color: rgba(0,0,0,0.5);
+    
+}
+
+
+#showTime
+{
+    width: 80%;
+    height : 95%;
+    border: 5px solid white;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+    font-size: 70px;
+    font-weight: bolder;
+}
+
+
+#toggle0:checked ~ .display
+{
+    border : 1px solid blue;
+    background-image: url("img/cities/accra-ghana.jpg");
+    background-position: center;
+    background-color: black;
+    background-size: 100% 450px;
+    background-repeat: no-repeat;
+}
+
+#toggle0:checked ~ .row0
+{
+    background-color: green;
+    
+}
+
+#toggle1:checked ~ .display
+{
+    border : 1px solid blue;
+    background-image: url("img/cities/beijing.jpg");
+    background-position: center;
+    background-color: black;
+    background-size: 100% 450px;
+    background-repeat: no-repeat;
+}
+
+
+#toggle2:checked ~ .display
+{
+    border : 1px solid blue;
+    background-image: url("img/cities/cape-town.jpg");
+    background-position: center;
+    background-color: black;
+    background-size: 100% 450px;
+    background-repeat: no-repeat;
+}
+
+
+
+#toggle3:checked ~ .display
+{
+    border : 1px solid blue;
+    background-image: url("img/cities/istanbul.jpg");
+    background-position: center;
+    background-color: black;
+    background-size: 100% 450px;
+    background-repeat: no-repeat;
+}
+
+
+
+
+#toggle4:checked ~ .display
+{
+    border : 1px solid blue;
+    background-image: url("img/cities/moscow.jpg");
+    background-position: center;
+    background-color: black;
+    background-size: 100% 450px;
+    background-repeat: no-repeat;
+}
+
+
+
+#toggle5:checked ~ .display
+{
+    border : 1px solid blue;
+    background-image: url("img/cities/new-york-city.jpg");
+    background-position: center;
+    background-color: black;
+    background-size: 100% 450px;
+    background-repeat: no-repeat;
+}
+
+
+#toggle5:checked ~ .overlay
+{
+    
+    color : yellow !important;
+}
+
+
+
+#toggle6:checked ~ .display
+{
+    border : 1px solid blue;
+    background-image: url("img/cities/rio-de-janeiro.jpg");
+    background-position: center;
+    background-color: black;
+    background-size: 100% 450px;
+    background-repeat: no-repeat;
+}
+
+
+#toggle7:checked ~ .display
+{
+    border : 1px solid blue;
+    background-image: url("img/cities/sydney.webp");
+    background-position: center;
+    background-color: black;
+    background-size: 100% 450px;
+    background-repeat: no-repeat;
+}
+
+
+
+
+
+#toggle8:checked ~ .display
+{
+    border : 1px solid blue;
+    background-image: url("img/cities/tokyo.jpg");
+    background-position: center;
+    background-color: black;
+    background-size: 100% 450px;
+    background-repeat: no-repeat;
+}
+
+
+
+#toggle9:checked ~ .display
+{
+    border : 1px solid blue;
+    background-image: url("img/cities/vancouver.jpg");
+    background-position: center;
+    background-color: black;
+    background-size: 100% 450px;
+    background-repeat: no-repeat;
+}
+
+
+
+/****************************************************************************************************/
+
+
+#local
+{
+    width : 100%;
+    background-color: #1e90ff;
+    padding: 15pz 0;
+    margin: 0; 
+    font-size: 1.5rem;
+    color: white;
+    text-align: center;
+}
+
+#cities
+{
+    /*border-collapse: collapse;*/
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    
+    
+}
+table td
+{
+    text-align: center;
+}
+
+#cities td
+{
+    border : 1px solid #dedede;
+    padding: 8px;
+    cursor: pointer;
+}
+
+
+#cities td:hover
+{
+    color: red;
+}
+
+
+#cities tr:nth-child(even)
+{
+    background-color: #f2f2f2;
+}
+
+.col1
+{
+    width : 10%;
+}
+
+.col2
+{
+    width : 45%;
+}
+
+
+
+@media only screen and (max-width: 474px)
+{
+    #showTime
+    {
+        font-size: 40px;
+    }
+}
